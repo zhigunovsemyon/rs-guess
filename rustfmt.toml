@@ -1,0 +1,5 @@
+unstable_features = true
+
+hard_tabs = true
+brace_style = "AlwaysNextLine"
+fn_single_line = true
