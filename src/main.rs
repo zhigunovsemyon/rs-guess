@@ -10,17 +10,18 @@ fn main()
 		std::print!("Введите число: ");
 		std::io::stdout().flush().expect("Флаш упал");
 
-		if 0 == match std::io::stdin().read_line(&mut buf) {
+		match std::io::stdin().read_line(&mut buf) {
 			Err(_) => {
 				std::eprintln!("read_line упал!");
 				break;
 			}
+			Ok(0) => {
+				// EOF
+				std::println!("\nЗавершение игры");
+				break;
+			}
 			Ok(num) => num,
-		} {
-			// EOF
-			std::println!("\nЗавершение игры");
-			break;
-		}
+		};
 
 		let i: i32 = match buf.trim().parse() {
 			Ok(num) => num,
